@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 class VatTest extends TestCase
 {
     /**
-     * @test
+     * @testN
      *
      * @dataProvider validVatFormatsDataProvider
      * @param array<string> $validVatNumbers

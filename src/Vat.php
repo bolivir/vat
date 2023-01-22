@@ -12,6 +12,8 @@ class Vat
     public function __construct(?Client $client = null)
     {
         $this->client = $client ?: new VIES();
+        // TODO: Remove!
+        $test = $this->client->validate('x', 'x');
     }
 
     public function validateFormat(string $vatNumber): bool
