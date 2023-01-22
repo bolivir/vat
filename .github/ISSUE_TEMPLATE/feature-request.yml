@@ -1,5 +1,5 @@
 name: Feature request
-description: Let us know anything that we can do better or that could benefit YoTeams
+description: Let us know anything that we can do better or that could benefit this package
 title: "Feature request: <short description>"
 labels: ["request: feature"]
 body:
