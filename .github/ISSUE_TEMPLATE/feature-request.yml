@@ -24,7 +24,7 @@ body:
       description: |
         Refer to a an existing bug, you can use `#bugid`
     validations:
-      required: true
+      required: false
   - type: textarea
     id: alternatives
     attributes:
