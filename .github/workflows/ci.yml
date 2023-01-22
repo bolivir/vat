@@ -27,13 +27,12 @@ jobs:
         with:
           coverage: "none"
           php-version: "${{ matrix.php-version }}"
-          tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
         uses: "ramsey/composer-install@v1"
 
       - name: "Run PHP_CodeSniffer"
-        run: "vendor/bin/phpstan analyse | cs2pr"
+        run: "vendor/bin/phpstan analyse"
 
   tests:
     name: "Tests"
