@@ -12,7 +12,13 @@ $ composer require bolivir/vat
 ```
 
 ## How to use
-TODO
+### Validate the format
+The method `validateFormat` will check the format for a given VAT number. It will not check the existence!  
+Example:
+```php
+$VAT = new \Bolivir\Vat\Vat();
+echo $VAT->validateFormat('FR12345678901'); // It will check the COUNTRY + FORMAT AND NOT REAL EXISTENCE!
+```
 
 # Change log
 Please see CHANGELOG for more information on what has been changed recently.
