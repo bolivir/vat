@@ -1,4 +1,4 @@
-[![Software License][ico-license]](LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # VAT  
 A package for validating EU VAT numbers, checking their format and existence.
