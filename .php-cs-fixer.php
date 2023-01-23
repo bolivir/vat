@@ -1,5 +1,12 @@
 <?php
 
+$header = <<<'HEADER'
+This file is part of the bolivir/vat project.
+(c) Ricardo Mosselman <mosselmanricardo@gmail.com>
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+HEADER;
+
 $finder = Symfony\Component\Finder\Finder::create()
     ->notPath('vendor')
     ->notPath('tests/API/endpoints/_support/_generated')
@@ -31,6 +38,10 @@ return (new PhpCsFixer\Config())
             'import_classes' => true,
             'import_constants' => true,
             'import_functions' => true,
+        ],
+        'header_comment' => [
+            'header' => $header,
+            'location' => 'after_open',
         ],
     ])
     ->setFinder($finder);
