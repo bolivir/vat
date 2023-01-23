@@ -11,33 +11,36 @@ use PHPUnit\Framework\TestCase;
 class VatTest extends TestCase
 {
     /**
-     * @testN
+     * @test
      *
      * @dataProvider validVatFormatsDataProvider
+     *
      * @param array<string> $validVatNumbers
      */
     public function it_can_validate_valid_formats_correctly(array $validVatNumbers): void
     {
         $vat = new Vat();
         foreach ($validVatNumbers as $vatNumber) {
-            $this->assertTrue(
-                $vat->validateFormat($vatNumber)
-            , "$vatNumber did not pass and should have passed!");
+            $result = $vat->validateFormat($vatNumber);
+            $this->assertTrue($result->isValid(), "{$vatNumber} did not pass and should have passed!");
+            $this->assertSame(substr($vatNumber, 0, 2), $result->countryCode());
+            $this->assertSame(substr($vatNumber, 2), $result->vatNumber());
         }
     }
 
     /**
      * @test
+     *
      * @param array<string> $invalidVatNumbers
+     *
      * @dataProvider invalidVatFormatsDataProvider
      */
     public function it_can_validate_invalid_formats_correctly(array $invalidVatNumbers): void
     {
         $vat = new Vat();
         foreach ($invalidVatNumbers as $vatNumber) {
-            $this->assertFalse(
-                $vat->validateFormat($vatNumber)
-                , "$vatNumber did pass and should not pass!");
+            $result = $vat->validateFormat($vatNumber);
+            $this->assertFalse($result->isValid(), "{$vatNumber} did pass and should not pass!");
         }
     }
 
@@ -86,7 +89,7 @@ class VatTest extends TestCase
     public function invalidVatFormatsDataProvider(): array
     {
         return [
-            [[  '',
+            [['',
                 'ATU1234567',
                 'BE012345678',
                 'BE123456789',
@@ -95,7 +98,7 @@ class VatTest extends TestCase
                 'CZ1234567',
                 'DE12345678',
                 'PREFIX_NL12345678B12',
-                'NL12345678B12_SUFFIX',]],
+                'NL12345678B12_SUFFIX', ]],
         ];
     }
 }
