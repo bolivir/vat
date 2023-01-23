@@ -17,7 +17,35 @@ The method `validateFormat` will check the format for a given VAT number. It wil
 Example:
 ```php
 $VAT = new \Bolivir\Vat\Vat();
-echo $VAT->validateFormat('FR12345678901'); // It will check the COUNTRY + FORMAT AND NOT REAL EXISTENCE!
+$response = $VAT->validateFormat('FR12345678901');
+```
+Calling the `validateFormat` method will return a `VatFormatValidationResponse`
+```php
+Bolivir\Vat\VatFormatValidationResponse {
+-countryCode: string
+-vatNumber: string
+-valid: boolean
+}
+```
+
+
+### Validate the existence
+The method `validate` will check the vat number for real existence, it will check it by the VIES service  
+Example:
+```php
+$VAT = new \Bolivir\Vat\Vat();
+echo $VAT->validate('FR12345678901');
+```
+Calling the `validate` method will return a `VatValidationResponse`
+```php
+Bolivir\Vat\VatValidationResponse {
+-countryCode: string
+-vatNumber: string
+-requestDate: string
+-valid: boolean
+-name: string
+-address: string
+}
 ```
 
 # Change log
@@ -28,4 +56,4 @@ If you discover any security related issues, please email mosselmanricardo@gmail
 
 # Credits
 - [Bolivir](https://github.com/bolivir)
-- [All Contributors](https://github.com/bolivir/multipay/graphs/contributors)
+- [All Contributors](https://github.com/bolivir/vat/graphs/contributors)
